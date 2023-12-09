@@ -1,0 +1,106 @@
+/* Resetowanie stylów */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-primary);
+}
+
+
+/* Stylowanie elementów HTML */
+html {
+  font-size: 100%; /* 16px */
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--text-color-dark);
+  background-color: var(--light-bg);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+ul {
+  list-style:none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Rootowe style CSS */
+:root {
+  /* Definiowanie kolorów */
+  --primary-color: #5d93e1;
+  --secondary-color: #ff2e63;
+  --accent-color: #08d9d6;
+  --dark-bg: #252a34;
+  --light-bg: #eaeaea;
+  --text-color: #fff;
+  --text-color-dark: #333;
+
+  /* Dodatkowe kolory */
+  --color-dark-slate: #354649;
+  --color-light-slate: #6C7A89;
+  --color-pale-teal: #A3C6C4;
+  --color-light-gray: #E0E7E9;
+
+  /* Definiowanie czcionek */
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Open Sans', sans-serif;
+
+  /* Definiowanie rozmiarów czcionek */
+  --fs-small: 0.8rem;
+  --fs-medium: 1rem;
+  --fs-large: 1.5rem;
+  --fs-xlarge: 2rem;
+
+  /* Definiowanie odstępów */
+  --spacing-small: 0.5rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 1.5rem;
+  --spacing-xlarge: 2rem;
+
+  /* Definiowanie cieni */
+  --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+  /* Definiowanie promienia obramowania */
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+}
+
+/* Buttons */
+
+.btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  border: 2px solid var(--color-pale-teal);
+  padding: .25rem;
+  color: var(--color-pale-teal);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-pale-teal);
+  color: #fff;
+}
