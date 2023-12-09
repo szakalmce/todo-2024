@@ -51,6 +51,7 @@
   color: var(--color-dark-slate);
   display: inline-block;
   position: relative;
+  margin-bottom: 2rem;
 }
 
 .title::after {
