@@ -1,16 +1,28 @@
 import React from 'react';
+import { FcSelfServiceKiosk, FcSettings, FcMindMap } from 'react-icons/fc';
 
-const Task = () => {
+const Task = ({ name, category, date, start, end, description, id }) => {
+  const iconHelper = () => {
+    if (category === 'development') {
+      return <FcSettings />;
+    } else if (category === 'research') {
+      return <FcMindMap />;
+    } else {
+      return <FcSelfServiceKiosk />;
+    }
+  };
+
   return (
-    <li>
-      <div>
-        <p>Task Name</p>
-        <p>Task Category</p>
+    <li className="task-wrapper">
+      <div className="task-icon-wrapper">{iconHelper()}</div>
+      <div className="task-content-wrapper">
+        <p>{name}</p>
+        <span>
+          {start} - {end}
+        </span>
       </div>
-      <div>
-        <button>DONE</button>
-        <button>EDIT</button>
-        <button>DELETE</button>
+      <div className="task-actions-wrapper">
+        <button>SEE</button>
       </div>
     </li>
   );

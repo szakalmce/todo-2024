@@ -1,7 +1,8 @@
 .wrapper {
   width: 80%;
-  margin: 2rem auto;
+  margin: 0 auto;
   text-align: center;
+  height: 100%;
 
 }
 
@@ -103,4 +104,12 @@
 
 .btn-center {
   grid-column: 2;
+}
+
+
+/*** TASK ***/
+
+.task-wrapper {
+  display: flex;
+  border: 1px solid red;
 }

@@ -1,5 +1,369 @@
-.todo-wrapper {
-  max-width: 600px;
-  border: 1px solid red;
-  margin: 0 auto;
+
+:root {
+  --main-color: #3786EB;
 }
+
+textarea {
+  resize: none;
+}
+
+/******* WRAPPERS ********/
+
+.app-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todolist-wrapper {
+  width: 380px;
+  height: 650px;
+  border-radius: 20px;
+  background-color: #fff;
+
+}
+
+.content-wrapper {
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.starter-content-wrapper {
+  margin-top: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.home-wrapper {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+.home-tasks-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.home-progressbar-wrapper {
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.task-title-wrapper {
+  display: flex;
+  justify-content: space-between; /* Rozstawia elementy równomiernie */
+  width: 100%; /* Ustaw pełną szerokość kontenera */
+
+}
+
+.task-title-position-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1; /* Zapewnia, że kontener zajmie dostępną przestrzeń */
+  position: relative;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.form-wrapper {
+  gap: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  justify-content: center;
+
+  height: 100%;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  align-items: start;
+}
+
+.form-radio-wrapper {
+  display: flex;
+  align-items: center;
+  
+
+  width: 100%;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.radio-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.input-columns-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  text-align: left;
+}
+
+.form-time-wrapper {
+  width: 100%;
+
+}
+
+.tasks-wrapper {
+  padding: 2rem 0;
+}
+
+/******** UX **********/
+
+.todo-button {
+  margin-top: auto;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: var(--main-color);
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  display: block;
+}
+
+.addtask-button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: var(--main-color);
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  display: block;
+  padding: .7rem;
+}
+
+.todo-button a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  display: block;
+  padding: .7rem;
+}
+
+.home-button-wrapper {
+  margin-top: auto;
+}
+
+.home-tasks-button {
+  background-color: transparent;
+  border: none;
+  color: #ddd;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+.home-button {
+  background-color: var(--main-color);
+
+  border-radius: 50%;
+  border: none;
+}
+
+.home-button a {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 300;
+  text-decoration: none;
+  color: #fff;
+  width: 50px;
+  height:50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-back {
+ margin-right: auto;
+ background-color: rgba(0,0,0, .1);
+ border: none;
+ width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.task-back a { 
+  display: block;
+  color: rgba(0,0,0, .4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.input {
+  padding: .5rem .5rem;
+  border-radius: 10px;
+  border: 2px solid #eee;
+  color: #000;
+}
+
+.input:focus-visible {
+  outline: none;
+  border-color: var(--main-color);
+}
+
+.fullwidth-input {
+  width: 100%;
+}
+
+input[type="radio"] {
+  display: none;
+  position: absolute;
+
+}
+
+.radio-wrapper label {
+  display: block;
+  cursor: pointer;
+  background-color: #eee;
+  color: #000;
+  padding: .5rem;
+  font-size: .8rem;
+  border-radius: 5px;
+  font-weight: bold;
+  user-select: none;
+}
+
+input[type="radio"]:checked + label {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+
+
+/******** TYPO **********/
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.task-title-position-wrapper h2 {
+  text-align: center;
+  margin-right: auto;
+  font-size: 1.3rem;
+}
+
+.form-title {
+  font-weight: bold;
+}
+
+.form-title-2 {
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+/******** HOME **********/
+
+
+
+.home-progressbar-title {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.home-progressbar-title span {
+  font-size: .8rem;
+}
+
+.home-progressbar-text {
+  display: flex;
+  justify-content: space-between;
+  margin: .25rem 0;
+  font-size: .9rem;
+}
+
+.progress-bar {
+  width: 100%; /* Pełna szerokość kontenera */
+  background-color: #ABBCC4; /* Tło paska postępu */
+  border-radius: 4px; /* Zaokrąglone rogi */
+}
+
+.progress {
+  height: 20px; /* Wysokość paska postępu */
+  background-color: #fff; /* Kolor wypełnienia paska */
+  text-align: center; /* Wyrównanie tekstu do środka */
+  line-height: 20px; /* Centrowanie tekstu pionowo */
+  color: white; /* Kolor tekstu */
+  border-radius: 4px; /* Zaokrąglone rogi */
+  z-index: 1;
+}
+
+
+/*** TASK ***/
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-wrapper {
+  display: grid;
+  grid-template-columns: 15% 60% 15%;
+  border: 1px solid #ddd;
+  gap: 5%;
+  border-radius: 10px;
+  padding: .3rem .5rem;
+  align-items: center;
+}
+
+.task-icon-wrapper {
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.task-content-wrapper p {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.task-content-wrapper span {
+  color: #ddd;
+  font-size: .9rem;
+}
+
+
+/** FORM **/
+
+.input-error {
+  border-color: red;
+}
+
+.error {
+  color: red;
+}
+

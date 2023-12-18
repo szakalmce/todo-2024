@@ -1,4 +1,5 @@
 import { useContext, createContext, useState } from 'react';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const AppContext = createContext();
 
@@ -7,15 +8,21 @@ export const useTodoListContext = () => {
 };
 
 export const TodoListContextProvider = ({ children }) => {
-  const [taskValues, setTaskValues] = useState({
-    title: '',
-    category: 'Work',
-    priority: '',
+  const [tasks, setTasks] = useLocalStorage('tasks', []);
+  const [newTaskValues, setNewTaskValues] = useState({
+    name: '',
+    category: '',
+    date: '',
+    start: '',
+    end: '',
+    description: '',
   });
 
   const value = {
-    taskValues,
-    setTaskValues,
+    tasks,
+    setTasks,
+    newTaskValues,
+    setNewTaskValues,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

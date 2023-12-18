@@ -1,0 +1,9 @@
+1. Dodawanie zadań
+2. Usuwanie zadań
+3. Edycja zadań
+
+1a. Dodawanie teksu 
+1b. Automatyczne dodawanie daty, kiedy zadanie zostało dodawanie
+1c. Dodanie kategorii (tablica) jako select
+1d. Dodanie priorytetu (tablica) jako lista (hight/medium/low)
+

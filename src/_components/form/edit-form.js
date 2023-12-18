@@ -3,15 +3,19 @@ import { useTodoListContext } from '../../context/appContext';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const Form = () => {
-  const { taskValues, setTaskValues, setTasks, tasks } = useTodoListContext();
+const EditForm = ({ handleSubmit, editedTask, setEditedTask }) => {
+  const { taskValues, setTaskValues, setTasks, tasks, setIsEdit } =
+    useTodoListContext();
+
+  console.log(editedTask);
 
   const formik = useFormik({
     initialValues: {
-      title: '',
-      category: 'Work',
-      priority: '',
-      isDone: false,
+      title: editedTask.title,
+      category: editedTask.category,
+      priority: editedTask.priority,
+      id: editedTask.id,
+      isEdit: editedTask.isEdit,
     },
     validationSchema: Yup.object({
       title: Yup.string()
@@ -20,11 +24,11 @@ const Form = () => {
       priority: Yup.string().required('Selecting a priority is required'),
     }),
     onSubmit: (values, { resetForm }) => {
-      // console.log(values);
-      setTasks((prev) => [
-        ...prev,
-        { ...values, id: Math.random(), isEdit: false },
-      ]);
+      setTasks(
+        tasks.map((task) => (task.id === editedTask.id ? { ...values } : task))
+      );
+
+      setIsEdit(false);
 
       resetForm();
     },
@@ -35,7 +39,7 @@ const Form = () => {
 
   return (
     <div>
-      <form className="form-wrapper" onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <div className="input-wrapper">
           <input
             value={formik.values.title}
@@ -51,7 +55,7 @@ const Form = () => {
           />
 
           {formik.touched.title && formik.errors.title && (
-            <span className="input-error">{formik.errors.title}</span>
+            <span className="error">{formik.errors.title}</span>
           )}
         </div>
         <div className="input-wrapper">
@@ -68,7 +72,7 @@ const Form = () => {
             ))}
           </select>
           {formik.touched.category && formik.errors.category && (
-            <span className="input-error">{formik.errors.category}</span>
+            <span className="error">{formik.errors.category}</span>
           )}
         </div>
         <div className="input-wrapper">
@@ -90,7 +94,7 @@ const Form = () => {
             </label>
           ))}
           {formik.touched.priority && formik.errors.priority && (
-            <span className="input-error">{formik.errors.priority}</span>
+            <span className="error">{formik.errors.priority}</span>
           )}
         </div>
         <button type="submit">Add</button>
@@ -99,4 +103,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default EditForm;
