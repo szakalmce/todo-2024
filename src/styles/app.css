@@ -106,10 +106,17 @@
   grid-column: 2;
 }
 
-
-/*** TASK ***/
-
-.task-wrapper {
-  display: flex;
-  border: 1px solid red;
+.btn-success {
+  background-color: green;
+  padding: .5rem;
+  border-radius: 5px;
+  color: #fff;
 }
+
+.btn-warning {
+  background-color: red;
+  padding: .5rem;
+  border-radius: 5px;
+  color: #fff;
+}
+

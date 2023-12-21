@@ -4,20 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTodoListContext } from '../../context/appContext';
 import TaskDeleteConfirm from '../modals/task-delete-cofirm';
 
-const Task = ({
-  name,
-  category,
-  date,
-  start,
-  end,
-  description,
-  id,
-  task,
-  type,
-}) => {
+const Task = ({ name, category, date, start, end, description, id, task }) => {
   const navigate = useNavigate();
-
-  const { tasks } = useTodoListContext();
 
   const iconHelper = () => {
     if (category === 'development') {
@@ -39,11 +27,7 @@ const Task = ({
         <div className="task-icon-wrapper">{iconHelper()}</div>
         <div className="task-content-wrapper">
           <p>{name}</p>
-          {type === 'all' ? (
-            <span>{date}</span>
-          ) : (
-            <span>{description.slice(0, 20)}...</span>
-          )}
+          <span>{description.slice(0, 20)}...</span>
         </div>
         <div className="task-actions-wrapper">
           <button onClick={handleClick}>See</button>

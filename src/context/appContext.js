@@ -9,6 +9,7 @@ export const useTodoListContext = () => {
 
 export const TodoListContextProvider = ({ children }) => {
   const [tasks, setTasks] = useLocalStorage('tasks', []);
+  const [editedTaskValues, setEditedTaskValues] = useState();
   const [newTaskValues, setNewTaskValues] = useState({
     name: '',
     category: '',
@@ -18,11 +19,22 @@ export const TodoListContextProvider = ({ children }) => {
     description: '',
   });
 
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const handleDeleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
   const value = {
     tasks,
     setTasks,
     newTaskValues,
     setNewTaskValues,
+    isOpenModal,
+    setIsOpenModal,
+    handleDeleteTask,
+    setEditedTaskValues,
+    editedTaskValues,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

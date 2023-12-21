@@ -5,10 +5,9 @@ import { useTodoListContext } from '../../context/appContext';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const AddTask = () => {
-  const { setNewTaskValues, setTasks, tasks } = useTodoListContext();
-
-  const navigation = useNavigate();
+const EditTask = () => {
+  const { editedTaskValues, setTasks, tasks } = useTodoListContext();
+  const navigate = useNavigate();
 
   const today = new Date().toISOString().slice(0, 10);
 
@@ -23,23 +22,28 @@ const AddTask = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: '',
-      category: '',
-      date: '',
-      start: '',
-      end: '',
-      description: '',
+      name: editedTaskValues.name,
+      category: editedTaskValues.category,
+      date: editedTaskValues.date,
+      start: editedTaskValues.start,
+      end: editedTaskValues.end,
+      description: editedTaskValues.description,
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
-      setTasks([
-        ...tasks,
-        { ...values, id: new Date().toISOString(), isDone: false },
-      ]);
+      const findedTask = tasks.find((task) => task.id === editedTaskValues.id);
+
+      console.log(findedTask);
+
+      setTasks(
+        tasks.map((task) =>
+          task.id === findedTask.id ? { ...task, ...values } : task
+        )
+      );
+
+      navigate('/home');
 
       resetForm();
-
-      navigation('/home');
     },
   });
 
@@ -53,7 +57,7 @@ const AddTask = () => {
                 <FaAngleLeft />
               </Link>
             </button>
-            <h2>Create New Task</h2>
+            <h2>Edit Task</h2>
           </div>
         </div>
 
@@ -186,7 +190,7 @@ const AddTask = () => {
             ></textarea>
           </div>
           <button type="submit" className="addtask-button">
-            Create Task
+            Save
           </button>
         </form>
       </div>
@@ -194,4 +198,4 @@ const AddTask = () => {
   );
 };
 
-export default AddTask;
+export default EditTask;

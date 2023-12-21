@@ -6,6 +6,14 @@ import Task from '../tasks/task';
 const Home = () => {
   const { tasks } = useTodoListContext();
 
+  const progressBarWidth = tasks.length;
+
+  const today = new Date().toISOString().slice(0, 10);
+
+  const todayTasks = tasks.filter((task) => task.date === today);
+
+  console.log(todayTasks);
+
   return (
     <div className="content-wrapper">
       <div className="home-wrapper">
@@ -16,7 +24,7 @@ const Home = () => {
           <div className="ho">
             <p>Today's progress summary</p>
             <span>
-              {tasks.length} {tasks.length <= 1 ? 'task' : 'tasks'}
+              {todayTasks.length} {todayTasks.length <= 1 ? 'task' : 'tasks'}
             </span>
           </div>
           <div className="">
@@ -32,14 +40,18 @@ const Home = () => {
         <div>
           <div className="home-tasks-title-wrapper">
             <h2>Today's Task</h2>
-            <button className="home-tasks-button">See All</button>
+            <button className="home-tasks-button">
+              <Link to="/all">See All</Link>
+            </button>
           </div>
         </div>
         <ul className="tasks-list">
-          {tasks.length === 0 ? (
+          {todayTasks.length === 0 ? (
             <p>You don't have any tasks to do!</p>
           ) : (
-            tasks.map((task) => <Task key={task.id} {...task} />)
+            todayTasks
+              .map((task) => <Task key={task.id} {...task} task={task} />)
+              .slice(0, 3)
           )}
         </ul>
       </div>
